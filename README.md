@@ -18,4 +18,11 @@
    `
     ionic serve
    `
+- 打包网页版
+
+    `
+        ionic build --prot
+    `
+    
+    www目录下面的即是。
 ### [启动后如果刷新遇到问题](https://www.jianshu.com/p/78272e8caea9)
