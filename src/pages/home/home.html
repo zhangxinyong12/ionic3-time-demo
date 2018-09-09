@@ -1,17 +1,33 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>月心情状态</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <header>
+    <button ion-button outline>上月</button>
+    <button ion-button outline>本月</button>
+    <button ion-button outline>下月</button>
+  </header>
+  <ul>
+    <!-- 周 表头 -->
+    <li class="week" *ngFor="let item of week_list">
+      <span>{{item}}</span>
+    </li>
+    <!-- 每天详细数据 -->
+    <li *ngFor="let item of time_list">
+      <span (click)="gotoPage(item.day);" *ngIf="item?.day" [ngClass]="{'yellow':item.mood==='高兴','sad':item.mood==='不高兴', 'bg_now':item.now==='0','bg_tomorrow':item.now==='1'}">
+        {{item.day}}
+      </span>
+    </li>
+  </ul>
+  <div class="explain">
+    <h5>评分说明:</h5>
+    <p>
+      <i class="yellow"> </i> 大于80分
+      <i class="sad"> </i> 低于80分
+      <i class="bg_now"> </i> 当天
+    </p>
+  </div>
 </ion-content>
